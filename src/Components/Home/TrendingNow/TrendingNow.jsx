@@ -4,12 +4,13 @@ import HomeCard from "../HomeCard/HomeCard";
 
 const TrendingNow = () => {
   const apiKey = import.meta.env.VITE_apiKey;
-  const trendingMovieURL = `https://api.themoviedb.org/3/trending/all/day?api_key=${apiKey}`;
+  const trendingMovieURL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
   const trendingTvURL = `https://api.themoviedb.org/3/trending/tv/day?api_key=${apiKey}`;
-  const onAirTv = `https://api.themoviedb.org/3/tv/on_the_air?api_key=${apiKey}`;
+  console.log(trendingTvURL.includes("tv"));
+  const topRated = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
   const [url, setUrl] = useState(`${trendingMovieURL}`);
   const trendingFetchData = useApi(url);
-  const onAirTvFetchData = useApi(onAirTv);
+  const topRatedFetchData = useApi(topRated);
   const setMovies = () => {
     setUrl(trendingMovieURL);
   };
@@ -34,9 +35,9 @@ const TrendingNow = () => {
         ))}
       </div>
 
-      <h1 className="font-semibold text-xl">On air TV Series</h1>
+      <h1 className="font-semibold text-xl">Top Rated Movies</h1>
       <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-x-[6px] gap-y-[12px] place-items-center py-[25px] overflow-hidden">
-        {onAirTvFetchData?.results?.map((cate) => (
+        {topRatedFetchData?.results?.map((cate) => (
           <HomeCard cate={cate} key={cate?.backdrop_path}></HomeCard>
         ))}
       </div>

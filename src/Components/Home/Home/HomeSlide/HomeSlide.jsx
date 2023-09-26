@@ -5,6 +5,7 @@ import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import star from "../../../../assets/Home/HomeSlider/star.png";
+import { Link } from "react-router-dom";
 const HomeSlide = () => {
   const apiKey = import.meta.env.VITE_apiKey;
   const nowPlaying = useApi(
@@ -17,10 +18,6 @@ const HomeSlide = () => {
           dynamicBullets: true,
         }}
         modules={[Pagination, Autoplay]}
-        autoplay={{
-          delay: 3500,
-          disableOnInteraction: false,
-        }}
         className="mySwiper "
       >
         {nowPlaying?.results?.map((result, i) => (
@@ -43,8 +40,10 @@ const HomeSlide = () => {
                 {result?.overview}
               </p>
               <div className="flex gap-3">
-                <button className="btn-red">Details</button>
-                <button className="btn-black">Add to List</button>
+                <Link to={`/movieDetails/${result?.id}`} className="btn-red">
+                  Details
+                </Link>
+                <Link className="btn-black">Add to List</Link>
               </div>
             </div>
           </SwiperSlide>
