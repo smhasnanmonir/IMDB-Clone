@@ -34,7 +34,9 @@ const HomeSlide = () => {
                 <p>|</p>
                 <p>Release Date: {result?.release_date}</p>
               </div>
-              <h1 className="text-3xl font-bold">{result?.title}</h1>
+              <h1 className="md:text-[65px] text-2xl font-black italic py-[20px]">
+                {result?.title}
+              </h1>
 
               <p className="md:w-1/2 md:block hidden font-semibold">
                 {result?.overview}
