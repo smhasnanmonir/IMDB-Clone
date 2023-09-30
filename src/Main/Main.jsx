@@ -1,4 +1,4 @@
-import { Outlet } from "react-router-dom";
+import { Outlet, ScrollRestoration } from "react-router-dom";
 import Header from "../Components/Headers/Header";
 
 const Main = () => {
@@ -6,6 +6,7 @@ const Main = () => {
     <div>
       <Header></Header>
       <Outlet></Outlet>
+      <ScrollRestoration></ScrollRestoration>
     </div>
   );
 };

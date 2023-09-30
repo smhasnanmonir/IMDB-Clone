@@ -2,7 +2,6 @@ import { ThreeDots } from "react-loader-spinner";
 import HomeCard from "../../Home/HomeCard/HomeCard";
 
 const Recommendation = ({ recommendationsMovieData }) => {
-  console.log(recommendationsMovieData);
   return (
     <div>
       {recommendationsMovieData?.loading ? (

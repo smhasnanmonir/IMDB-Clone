@@ -35,6 +35,7 @@ const TopStart = ({ singleMovieCreditData }) => {
                     {castMember?.profile_path ? (
                       <>
                         <LazyLoadImage
+                          effect="blur"
                           src={`https://image.tmdb.org/t/p/w500${castMember?.profile_path}`}
                           className="w-[65px] hover-img"
                         ></LazyLoadImage>

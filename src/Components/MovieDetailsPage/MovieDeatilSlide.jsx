@@ -53,6 +53,7 @@ const MovieDeatilSlide = ({ movieImageUrlData }) => {
               .map((backdrop) => (
                 <SwiperSlide key={backdrop?.file_path}>
                   <LazyLoadImage
+                    effect="blur"
                     src={`https://image.tmdb.org/t/p/w500${backdrop?.file_path}`}
                     className="w-full object-cover"
                   ></LazyLoadImage>

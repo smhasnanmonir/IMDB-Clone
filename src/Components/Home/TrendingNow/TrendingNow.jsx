@@ -7,7 +7,6 @@ const TrendingNow = () => {
   const apiKey = import.meta.env.VITE_apiKey;
   const trendingMovieURL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
   const trendingTvURL = `https://api.themoviedb.org/3/trending/tv/day?api_key=${apiKey}`;
-  console.log(trendingTvURL.includes("tv"));
   const topRated = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
   const [url, setUrl] = useState(`${trendingMovieURL}`);
   const trendingFetchData = useApi(url);
