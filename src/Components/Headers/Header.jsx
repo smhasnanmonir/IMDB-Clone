@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 const Header = () => {
   const [isToggleOpen, setIsToggleOpen] = useState(false);
@@ -13,8 +14,8 @@ const Header = () => {
             role="navigation"
           >
             {/*      <!-- Brand logo --> */}
-            <a
-              id="WindUI"
+            <Link
+              to="/"
               aria-label="WindUI logo"
               aria-current="page"
               className="flex items-center gap-2 whitespace-nowrap py-3 text-lg focus:outline-none lg:flex-1"
@@ -26,7 +27,7 @@ const Header = () => {
                 alt=""
               />
               SM Movies
-            </a>
+            </Link>
             {/*      <!-- Mobile trigger --> */}
             <button
               className={`relative order-10 block h-10 w-10 self-center lg:hidden

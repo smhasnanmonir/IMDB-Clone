@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom";
-
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 const HomeCard = ({ cate }) => {
   return (
     <Link to={`/movieDetails/${cate?.id}`}>
@@ -8,14 +9,14 @@ const HomeCard = ({ cate }) => {
           <h1 className="">{cate?.vote_average}</h1>
         </div>
         <div className="overflow-hidden">
-          <img
-            className="relative w-full lg:h-[350px] h-[250px] object-cover object-top hover:scale-110 transition-all duration-300 ease-in cursor-pointer overflow-hidden"
+          <LazyLoadImage
             src={`https://image.tmdb.org/t/p/w500${cate?.backdrop_path}`}
-          />
+            className="relative w-full lg:h-[350px] h-[250px] object-cover object-top hover:scale-110 transition-all duration-300 ease-in cursor-pointer overflow-hidden"
+          ></LazyLoadImage>
         </div>
 
-        <p className="font-xl font-semibold">{cate?.name?.slice(0, 20)}</p>
-        <p className="font-xl font-semibold">{cate?.title?.slice(0, 20)}</p>
+        <p className="font-xl font-semibold">{cate?.name?.slice(0, 15)}</p>
+        <p className="font-xl font-semibold">{cate?.title?.slice(0, 18)}</p>
       </div>
     </Link>
   );
