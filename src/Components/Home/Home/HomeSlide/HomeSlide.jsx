@@ -6,9 +6,9 @@ import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
 import star from "../../../../assets/Home/HomeSlider/star.png";
 import { Link } from "react-router-dom";
-import { ThreeDots } from "react-loader-spinner";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import LoaderSpinner from "../../../LoaderSpinner/LoaderSpinner";
 
 const HomeSlide = () => {
   const apiKey = import.meta.env.VITE_apiKey;
@@ -27,16 +27,7 @@ const HomeSlide = () => {
         <>
           {nowPlaying?.loading ? (
             <div className="grid place-items-center">
-              <ThreeDots
-                height="80"
-                width="80"
-                radius="9"
-                color="#4fa94d"
-                ariaLabel="three-dots-loading"
-                wrapperStyle={{}}
-                wrapperClassName=""
-                visible={true}
-              />
+              <LoaderSpinner></LoaderSpinner>
             </div>
           ) : (
             <>

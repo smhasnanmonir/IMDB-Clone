@@ -2,23 +2,17 @@ import { LazyLoadImage } from "react-lazy-load-image-component";
 import castAvatar from "../../assets/Cast/user.png";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import { ThreeDots } from "react-loader-spinner";
+import { Link } from "react-router-dom";
+import LoaderSpinner from "../LoaderSpinner/LoaderSpinner";
 const TopStart = ({ singleMovieCreditData }) => {
+  console.log(singleMovieCreditData?.datas);
   return (
     <>
       <h1 className="md:text-4xl text-xl font-semibold py-[25px]">Top Casts</h1>
       {singleMovieCreditData?.loading ? (
         <>
           <div>
-            <ThreeDots
-              height="80"
-              width="80"
-              radius="9"
-              color="#4fa94d"
-              ariaLabel="three-dots-loading"
-              wrapperStyle={{}}
-              wrapperClassName=""
-              visible={true}
-            />
+            <LoaderSpinner></LoaderSpinner>
           </div>
         </>
       ) : (
@@ -28,7 +22,8 @@ const TopStart = ({ singleMovieCreditData }) => {
               {singleMovieCreditData?.datas?.cast
                 ?.slice(0, 15)
                 .map((castMember, i) => (
-                  <div
+                  <Link
+                    to={`/actorDetails/${castMember?.id}`}
                     key={i}
                     className="flex gap-2 shadow-sm shadow-blue-400 overflow-hidden"
                   >
@@ -54,7 +49,7 @@ const TopStart = ({ singleMovieCreditData }) => {
                       </h1>
                       <h1>{castMember?.character}</h1>
                     </div>
-                  </div>
+                  </Link>
                 ))}
             </div>
           </div>

@@ -2,6 +2,7 @@ import { useState } from "react";
 import useApi from "../../../Hooks/useApi";
 import HomeCard from "../HomeCard/HomeCard";
 import { ThreeDots } from "react-loader-spinner";
+import LoaderSpinner from "../../LoaderSpinner/LoaderSpinner";
 
 const TrendingNow = () => {
   const apiKey = import.meta.env.VITE_apiKey;
@@ -33,16 +34,7 @@ const TrendingNow = () => {
         <>
           {topRatedFetchData?.loading ? (
             <>
-              <ThreeDots
-                height="80"
-                width="80"
-                radius="9"
-                color="#4fa94d"
-                ariaLabel="three-dots-loading"
-                wrapperStyle={{}}
-                wrapperClassName=""
-                visible={true}
-              />
+              <LoaderSpinner></LoaderSpinner>
             </>
           ) : (
             <>
@@ -59,16 +51,7 @@ const TrendingNow = () => {
         <>
           {topRatedFetchData?.loading ? (
             <>
-              <ThreeDots
-                height="80"
-                width="80"
-                radius="9"
-                color="#4fa94d"
-                ariaLabel="three-dots-loading"
-                wrapperStyle={{}}
-                wrapperClassName=""
-                visible={true}
-              />
+              <LoaderSpinner></LoaderSpinner>
             </>
           ) : (
             <>

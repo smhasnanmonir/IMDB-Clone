@@ -6,8 +6,8 @@ import TopStart from "./TopStart";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import Recommendation from "./Recommendation/Recommendation";
-import { ThreeDots } from "react-loader-spinner";
 import alt2 from "../../assets/MovieDetails/alt2.jpg";
+import LoaderSpinner from "../LoaderSpinner/LoaderSpinner";
 const MovieDetailsPage = () => {
   const { MovieId } = useParams();
   const apiKey = import.meta.env.VITE_apiKey;
@@ -18,29 +18,15 @@ const MovieDetailsPage = () => {
   const creditUrl = `https://api.themoviedb.org/3/movie/${MovieId}/credits?api_key=${apiKey}`;
   const singleMovieData = useApi(movieUrl);
   const singleMovieCreditData = useApi(creditUrl);
-  console.log("credit", singleMovieCreditData);
   const movieImageUrlData = useApi(movieImageUrl);
   const recommendationsMovieData = useApi(recommendationMovieUrl);
   const similarMovieData = useApi(similarMovieUrl);
-  const director = singleMovieCreditData?.crew?.filter(
-    (directorName) => directorName?.job == "Director"
-  );
-  console.log(recommendationsMovieData);
 
   return (
     <div className="md:w-3/4 mx-auto my-0 md:px-0 px-[5%] py-[2%]">
       {singleMovieData?.loading ? (
         <>
-          <ThreeDots
-            height="80"
-            width="80"
-            radius="9"
-            color="#4fa94d"
-            ariaLabel="three-dots-loading"
-            wrapperStyle={{}}
-            wrapperClassName=""
-            visible={true}
-          />
+          <LoaderSpinner></LoaderSpinner>
         </>
       ) : (
         <>
