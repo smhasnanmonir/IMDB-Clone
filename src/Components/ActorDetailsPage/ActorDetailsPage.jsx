@@ -1,7 +1,6 @@
 import { useParams } from "react-router-dom";
 import useApi from "../../Hooks/useApi";
 import HomeCard from "../Home/HomeCard/HomeCard";
-import { ThreeDots } from "react-loader-spinner";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import LoaderSpinner from "../LoaderSpinner/LoaderSpinner";
 import "react-lazy-load-image-component/src/effects/blur.css";
@@ -79,10 +78,11 @@ const ActorDetailsPage = () => {
             <>
               <div className="grid md:grid-cols-5 grid-cols-3 gap-2">
                 {actorImageData?.datas?.profiles
-                  ?.slice(0, 10)
+                  ?.slice(0, 9)
                   .map((profile, i) => (
                     <div key={i} className="overflow-hidden">
                       <LazyLoadImage
+                        effect="blur"
                         className="w-[350px] h-full hover-img"
                         src={`https://image.tmdb.org/t/p/original${profile?.file_path}`}
                       ></LazyLoadImage>

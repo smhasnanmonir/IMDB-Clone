@@ -17,6 +17,7 @@ const MovieDetailsPage = () => {
   const movieUrl = `https://api.themoviedb.org/3/movie/${MovieId}?api_key=${apiKey}`;
   const creditUrl = `https://api.themoviedb.org/3/movie/${MovieId}/credits?api_key=${apiKey}`;
   const singleMovieData = useApi(movieUrl);
+  console.log("singleMovieData", singleMovieData);
   const singleMovieCreditData = useApi(creditUrl);
   const movieImageUrlData = useApi(movieImageUrl);
   const recommendationsMovieData = useApi(recommendationMovieUrl);

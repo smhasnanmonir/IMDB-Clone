@@ -5,7 +5,6 @@ import { ThreeDots } from "react-loader-spinner";
 import { Link } from "react-router-dom";
 import LoaderSpinner from "../LoaderSpinner/LoaderSpinner";
 const TopStart = ({ singleMovieCreditData }) => {
-  console.log(singleMovieCreditData?.datas);
   return (
     <>
       <h1 className="md:text-4xl text-xl font-semibold py-[25px]">Top Casts</h1>
