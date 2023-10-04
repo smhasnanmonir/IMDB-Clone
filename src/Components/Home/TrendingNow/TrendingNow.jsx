@@ -1,50 +1,67 @@
 import { useState } from "react";
 import useApi from "../../../Hooks/useApi";
 import HomeCard from "../HomeCard/HomeCard";
-import { ThreeDots } from "react-loader-spinner";
 import LoaderSpinner from "../../LoaderSpinner/LoaderSpinner";
-
+import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
+import "react-tabs/style/react-tabs.css";
+import "./TrendingNow.css";
+import HomeTvCard from "../HomeCard/HomeTvCard";
 const TrendingNow = () => {
   const apiKey = import.meta.env.VITE_apiKey;
   const trendingMovieURL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
   const trendingTvURL = `https://api.themoviedb.org/3/trending/tv/day?api_key=${apiKey}`;
   const topRated = `https://api.themoviedb.org/3/movie/top_rated?api_key=${apiKey}`;
-  const [url, setUrl] = useState(`${trendingMovieURL}`);
-  const trendingFetchData = useApi(url);
+  const trendingFetchMovieData = useApi(trendingMovieURL);
+  const trendingFetchTVData = useApi(trendingTvURL);
   const topRatedFetchData = useApi(topRated);
-  const setMovies = () => {
-    setUrl(trendingMovieURL);
-  };
-  const setTv = () => {
-    setUrl(trendingTvURL);
-  };
 
   return (
     <div className="md:px-[10%] px-[5%] py-[2%]">
       <h1 className="font-semibold text-xl pb-[15px]">Trending Now</h1>
-      <div className="flex gap-2">
-        <button onClick={setMovies} className="btn-red">
-          Movies
-        </button>
-        <button onClick={setTv} className="btn-black">
-          TV-Shows
-        </button>
-      </div>
-      <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-x-[6px] gap-y-[12px] place-items-center py-[25px] overflow-hidden">
-        <>
-          {topRatedFetchData?.loading ? (
+      <Tabs>
+        <TabList>
+          <Tab>Movies</Tab>
+          <Tab>Tv Series</Tab>
+        </TabList>
+
+        <TabPanel>
+          <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-x-[6px] gap-y-[12px] place-items-center py-[25px] overflow-hidden">
             <>
-              <LoaderSpinner></LoaderSpinner>
+              {trendingFetchMovieData?.loading ? (
+                <>
+                  <LoaderSpinner></LoaderSpinner>
+                </>
+              ) : (
+                <>
+                  {trendingFetchMovieData?.datas?.results?.map((cate) => (
+                    <HomeCard cate={cate} key={cate?.backdrop_path}></HomeCard>
+                  ))}
+                </>
+              )}
             </>
-          ) : (
+          </div>
+        </TabPanel>
+        <TabPanel>
+          <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-x-[6px] gap-y-[12px] place-items-center py-[25px] overflow-hidden">
             <>
-              {trendingFetchData?.datas?.results?.map((cate) => (
-                <HomeCard cate={cate} key={cate?.backdrop_path}></HomeCard>
-              ))}
+              {trendingFetchTVData?.loading ? (
+                <>
+                  <LoaderSpinner></LoaderSpinner>
+                </>
+              ) : (
+                <>
+                  {trendingFetchTVData?.datas?.results?.map((cate) => (
+                    <HomeTvCard
+                      cate={cate}
+                      key={cate?.backdrop_path}
+                    ></HomeTvCard>
+                  ))}
+                </>
+              )}
             </>
-          )}
-        </>
-      </div>
+          </div>
+        </TabPanel>
+      </Tabs>
 
       <h1 className="font-semibold text-xl">Top Rated Movies</h1>
       <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-x-[6px] gap-y-[12px] place-items-center py-[25px] overflow-hidden">

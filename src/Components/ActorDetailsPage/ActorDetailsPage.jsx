@@ -4,6 +4,7 @@ import HomeCard from "../Home/HomeCard/HomeCard";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import LoaderSpinner from "../LoaderSpinner/LoaderSpinner";
 import "react-lazy-load-image-component/src/effects/blur.css";
+import HomeTvCard from "../Home/HomeCard/HomeTvCard";
 
 const ActorDetailsPage = () => {
   const { ActorId } = useParams();
@@ -81,11 +82,13 @@ const ActorDetailsPage = () => {
                   ?.slice(0, 9)
                   .map((profile, i) => (
                     <div key={i} className="overflow-hidden">
-                      <LazyLoadImage
-                        effect="blur"
-                        className="w-[350px] h-full hover-img"
-                        src={`https://image.tmdb.org/t/p/original${profile?.file_path}`}
-                      ></LazyLoadImage>
+                      <div className="hover-img">
+                        <LazyLoadImage
+                          effect="blur"
+                          className="w-[350px] h-full"
+                          src={`https://image.tmdb.org/t/p/original${profile?.file_path}`}
+                        ></LazyLoadImage>
+                      </div>
                     </div>
                   ))}
               </div>
@@ -127,7 +130,7 @@ const ActorDetailsPage = () => {
             <>
               <div className="grid md:grid-cols-5 grid-cols-2 gap-2">
                 {actorSeriesCredit?.datas?.cast?.map((series, i) => (
-                  <HomeCard key={i} cate={series}></HomeCard>
+                  <HomeTvCard key={i} cate={series}></HomeTvCard>
                 ))}
               </div>
             </>

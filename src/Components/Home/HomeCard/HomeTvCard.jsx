@@ -1,10 +1,11 @@
-import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
+import { Link } from "react-router-dom";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import alt from "../../../assets/Home/HomeCard/alter.jpg";
-const HomeCard = ({ cate }) => {
+
+const HomeTvCard = ({ cate }) => {
   return (
-    <Link to={`/movieDetails/${cate?.id}`}>
+    <Link to={`/tvDetails/${cate?.id}`}>
       <div className="overflow-hidden">
         <div className="absolute mt-1  ml-1 px-3 py-1 z-10 bg-red-300 rounded-lg">
           <h1 className="">{cate?.vote_average?.toFixed(2)}</h1>
@@ -29,10 +30,10 @@ const HomeCard = ({ cate }) => {
           )}
         </div>
 
-        <p className="font-xl font-semibold">{cate?.title?.slice(0, 15)}</p>
+        <p className="font-xl font-semibold">{cate?.name?.slice(0, 15)}</p>
       </div>
     </Link>
   );
 };
 
-export default HomeCard;
+export default HomeTvCard;

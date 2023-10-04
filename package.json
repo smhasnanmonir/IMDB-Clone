@@ -16,8 +16,8 @@
     "react-dom": "^18.2.0",
     "react-lazy-load-image-component": "^1.6.0",
     "react-loader-spinner": "^5.4.5",
-    "react-photo-gallery": "^8.0.0",
     "react-router-dom": "^6.16.0",
+    "react-tabs": "^6.0.2",
     "sort-by": "^1.2.0",
     "swiper": "^10.3.0"
   },
@@ -33,5 +33,18 @@
     "postcss": "^8.4.30",
     "tailwindcss": "^3.3.3",
     "vite": "^4.4.5"
-  }
+  },
+  "description": "This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.",
+  "main": "postcss.config.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/smhasnanmonir/sm-movies.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/smhasnanmonir/sm-movies/issues"
+  },
+  "homepage": "https://github.com/smhasnanmonir/sm-movies#readme"
 }

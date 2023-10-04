@@ -17,7 +17,6 @@ const MovieDetailsPage = () => {
   const movieUrl = `https://api.themoviedb.org/3/movie/${MovieId}?api_key=${apiKey}`;
   const creditUrl = `https://api.themoviedb.org/3/movie/${MovieId}/credits?api_key=${apiKey}`;
   const singleMovieData = useApi(movieUrl);
-  console.log("singleMovieData", singleMovieData);
   const singleMovieCreditData = useApi(creditUrl);
   const movieImageUrlData = useApi(movieImageUrl);
   const recommendationsMovieData = useApi(recommendationMovieUrl);
@@ -38,7 +37,7 @@ const MovieDetailsPage = () => {
             <>
               <LazyLoadImage
                 effect="blur"
-                src={`https://image.tmdb.org/t/p/original/${singleMovieData?.datas?.backdrop_path}`}
+                src={`https://image.tmdb.org/t/p/original${singleMovieData?.datas?.backdrop_path}`}
               ></LazyLoadImage>
             </>
           ) : (
@@ -60,11 +59,14 @@ const MovieDetailsPage = () => {
       </div>
 
       {/* Photos */}
-      {movieImageUrlData?.datas?.backdrops?.length != 0 && (
-        <MovieDeatilSlide
-          movieImageUrlData={movieImageUrlData}
-        ></MovieDeatilSlide>
-      )}
+      <>
+        <h1 className="md:text-4xl text-xl py-[25px]">Image Gallery</h1>
+        {movieImageUrlData?.datas?.backdrops?.length != 0 && (
+          <MovieDeatilSlide
+            movieImageUrlData={movieImageUrlData}
+          ></MovieDeatilSlide>
+        )}
+      </>
 
       {/* Top Start */}
       <TopStart singleMovieCreditData={singleMovieCreditData}></TopStart>

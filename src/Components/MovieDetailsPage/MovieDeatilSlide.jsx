@@ -3,14 +3,12 @@ import "swiper/css/bundle";
 import "swiper/css";
 import "swiper/css/pagination";
 import { Autoplay, Pagination } from "swiper/modules";
-import { ThreeDots } from "react-loader-spinner";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import LoaderSpinner from "../LoaderSpinner/LoaderSpinner";
 const MovieDeatilSlide = ({ movieImageUrlData }) => {
   return (
     <div className="">
-      <h1 className="md:text-4xl text-xl py-[25px]">Image Gallery</h1>
       {movieImageUrlData?.loading ? (
         <>
           <LoaderSpinner></LoaderSpinner>
