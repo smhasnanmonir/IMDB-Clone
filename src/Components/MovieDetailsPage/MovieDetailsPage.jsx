@@ -79,7 +79,8 @@ const MovieDetailsPage = () => {
             Recommended Movies
           </h1>
           <Recommendation
-            recommendationsMovieData={recommendationsMovieData}
+            recommendations={recommendationsMovieData}
+            type="movie"
           ></Recommendation>
         </div>
       )}
@@ -92,7 +93,8 @@ const MovieDetailsPage = () => {
             Similar Movies
           </h1>
           <Recommendation
-            recommendationsMovieData={similarMovieData}
+            recommendations={similarMovieData}
+            type="movie"
           ></Recommendation>
         </div>
       )}

@@ -2,9 +2,19 @@ import { Link } from "react-router-dom";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import alt from "../../../assets/Home/HomeCard/alter.jpg";
-const HomeCard = ({ cate }) => {
+import { useState } from "react";
+import { useEffect } from "react";
+const HomeCard = ({ cate, type }) => {
+  const [type1, setType1] = useState(type);
+  useEffect(() => {
+    if (type == "movie") {
+      setType1("movieDetails");
+    } else {
+      setType1("tvDetails");
+    }
+  }, [type]);
   return (
-    <Link to={`/movieDetails/${cate?.id}`}>
+    <Link to={`/${type1}/${cate?.id}`}>
       <div className="overflow-hidden">
         <div className="absolute mt-1  ml-1 px-3 py-1 z-10 bg-red-300 rounded-lg">
           <h1 className="">{cate?.vote_average?.toFixed(2)}</h1>
@@ -28,8 +38,15 @@ const HomeCard = ({ cate }) => {
             </>
           )}
         </div>
-
-        <p className="font-xl font-semibold">{cate?.title?.slice(0, 15)}</p>
+        {type == "movie" ? (
+          <>
+            <p className="font-xl font-semibold">{cate?.title?.slice(0, 15)}</p>
+          </>
+        ) : (
+          <>
+            <p className="font-xl font-semibold">{cate?.name?.slice(0, 15)}</p>
+          </>
+        )}
       </div>
     </Link>
   );

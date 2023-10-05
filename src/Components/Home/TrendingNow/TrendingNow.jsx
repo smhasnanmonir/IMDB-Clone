@@ -1,11 +1,9 @@
-import { useState } from "react";
 import useApi from "../../../Hooks/useApi";
 import HomeCard from "../HomeCard/HomeCard";
 import LoaderSpinner from "../../LoaderSpinner/LoaderSpinner";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
 import "./TrendingNow.css";
-import HomeTvCard from "../HomeCard/HomeTvCard";
 const TrendingNow = () => {
   const apiKey = import.meta.env.VITE_apiKey;
   const trendingMovieURL = `https://api.themoviedb.org/3/movie/now_playing?api_key=${apiKey}`;
@@ -34,7 +32,11 @@ const TrendingNow = () => {
               ) : (
                 <>
                   {trendingFetchMovieData?.datas?.results?.map((cate) => (
-                    <HomeCard cate={cate} key={cate?.backdrop_path}></HomeCard>
+                    <HomeCard
+                      cate={cate}
+                      type="movie"
+                      key={cate?.backdrop_path}
+                    ></HomeCard>
                   ))}
                 </>
               )}
@@ -51,10 +53,7 @@ const TrendingNow = () => {
               ) : (
                 <>
                   {trendingFetchTVData?.datas?.results?.map((cate) => (
-                    <HomeTvCard
-                      cate={cate}
-                      key={cate?.backdrop_path}
-                    ></HomeTvCard>
+                    <HomeCard cate={cate} key={cate?.backdrop_path}></HomeCard>
                   ))}
                 </>
               )}

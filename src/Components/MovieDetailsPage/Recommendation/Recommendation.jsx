@@ -1,20 +1,30 @@
 import HomeCard from "../../Home/HomeCard/HomeCard";
 import LoaderSpinner from "../../LoaderSpinner/LoaderSpinner";
 
-const Recommendation = ({ recommendationsMovieData }) => {
+const Recommendation = ({ recommendations, type }) => {
   return (
     <div>
-      {recommendationsMovieData?.loading ? (
+      {recommendations?.loading ? (
         <>
           <LoaderSpinner></LoaderSpinner>
         </>
       ) : (
         <>
-          {recommendationsMovieData?.datas?.results != 0 && (
+          {recommendations?.datas?.results != 0 && (
             <div className="grid md:grid-cols-6 grid-cols-2 gap-[8px]">
-              {recommendationsMovieData?.datas?.results?.map((result, i) => (
-                <HomeCard key={i} cate={result}></HomeCard>
-              ))}
+              {type == "movie" ? (
+                <>
+                  {recommendations?.datas?.results?.map((result, i) => (
+                    <HomeCard key={i} cate={result}></HomeCard>
+                  ))}
+                </>
+              ) : (
+                <>
+                  {recommendations?.datas?.results?.map((result, i) => (
+                    <HomeCard key={i} cate={result}></HomeCard>
+                  ))}
+                </>
+              )}
             </div>
           )}
         </>

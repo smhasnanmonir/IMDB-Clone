@@ -5,6 +5,7 @@ import MovieDetailsPage from "../Components/MovieDetailsPage/MovieDetailsPage";
 import ActorDetailsPage from "../Components/ActorDetailsPage/ActorDetailsPage";
 import SearchItem from "../Components/SearchItem/SearchItem";
 import TvDetailsPage from "../Components/TvDetailsPage/TvDetailsPage";
+import TvSeasonDetails from "../Components/TvDetailsPage/TvSeasonDetails/TvSeasonDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,6 +22,10 @@ const router = createBrowserRouter([
       {
         path: "/tvDetails/:TvId",
         element: <TvDetailsPage></TvDetailsPage>,
+      },
+      {
+        path: "/tvSeasonDetails/:TvId",
+        element: <TvSeasonDetails></TvSeasonDetails>,
       },
       {
         path: "/actorDetails/:ActorId",

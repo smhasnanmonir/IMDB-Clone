@@ -4,7 +4,6 @@ import HomeCard from "../Home/HomeCard/HomeCard";
 import { LazyLoadImage } from "react-lazy-load-image-component";
 import LoaderSpinner from "../LoaderSpinner/LoaderSpinner";
 import "react-lazy-load-image-component/src/effects/blur.css";
-import HomeTvCard from "../Home/HomeCard/HomeTvCard";
 
 const ActorDetailsPage = () => {
   const { ActorId } = useParams();
@@ -110,7 +109,7 @@ const ActorDetailsPage = () => {
             <>
               <div className="grid md:grid-cols-5 grid-cols-2 gap-2">
                 {actorMovieCredit?.datas?.cast?.map((movie, i) => (
-                  <HomeCard key={i} cate={movie}></HomeCard>
+                  <HomeCard key={i} type="movie" cate={movie}></HomeCard>
                 ))}
               </div>
             </>
@@ -130,7 +129,7 @@ const ActorDetailsPage = () => {
             <>
               <div className="grid md:grid-cols-5 grid-cols-2 gap-2">
                 {actorSeriesCredit?.datas?.cast?.map((series, i) => (
-                  <HomeTvCard key={i} cate={series}></HomeTvCard>
+                  <HomeCard key={i} cate={series}></HomeCard>
                 ))}
               </div>
             </>

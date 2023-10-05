@@ -16,6 +16,7 @@
 }
 
 .react-tabs__tab--selected {
+  border: none;
   background-color: #38d9a9;
   padding-bottom: 10px;
 }
