@@ -53,7 +53,11 @@ const TrendingNow = () => {
               ) : (
                 <>
                   {trendingFetchTVData?.datas?.results?.map((cate) => (
-                    <HomeCard cate={cate} key={cate?.backdrop_path}></HomeCard>
+                    <HomeCard
+                      cate={cate}
+                      type="tv"
+                      key={cate?.backdrop_path}
+                    ></HomeCard>
                   ))}
                 </>
               )}

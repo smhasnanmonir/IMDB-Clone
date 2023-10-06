@@ -79,7 +79,7 @@ const TvDetailsPage = () => {
       </div>
       <>
         <h1 className="py-[25px] md:text-4xl text-xl font-semibold ">Photos</h1>
-        <div className="overflow-scroll">
+        <div className="">
           <MovieDeatilSlide
             movieImageUrlData={singleTvPhotoData}
           ></MovieDeatilSlide>

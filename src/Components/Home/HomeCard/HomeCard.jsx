@@ -9,8 +9,10 @@ const HomeCard = ({ cate, type }) => {
   useEffect(() => {
     if (type == "movie") {
       setType1("movieDetails");
-    } else {
+    } else if (type == "tv") {
       setType1("tvDetails");
+    } else {
+      setType1("actorDetails");
     }
   }, [type]);
   return (
@@ -25,6 +27,14 @@ const HomeCard = ({ cate, type }) => {
               <LazyLoadImage
                 effect="blur"
                 src={`https://image.tmdb.org/t/p/w500${cate?.backdrop_path}`}
+                className="relative w-full lg:h-[350px] h-[250px] object-cover object-top"
+              ></LazyLoadImage>
+            </div>
+          ) : cate?.profile_path ? (
+            <div className="hover:scale-110 transition-all duration-300 ease-linear cursor-pointer overflow-hidden">
+              <LazyLoadImage
+                effect="blur"
+                src={`https://image.tmdb.org/t/p/w500${cate?.profile_path}`}
                 className="relative w-full lg:h-[350px] h-[250px] object-cover object-top"
               ></LazyLoadImage>
             </div>
