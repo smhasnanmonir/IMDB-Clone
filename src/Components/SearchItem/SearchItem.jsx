@@ -13,7 +13,6 @@ const SearchItem = () => {
   const searchMovieData = useApi(searchMovieURL);
   const searchTvData = useApi(searchTvURL);
   const searchActorData = useApi(searchActorURL);
-  console.log("actor", searchActorData);
   const filteredMovieSearchData = searchMovieData?.datas?.results?.filter(
     (search) => search?.backdrop_path != null
   );

@@ -26,7 +26,6 @@ const TvDetailsPage = () => {
   const similarTvUrl = `https://api.themoviedb.org/3/tv/${TvId}/recommendations?api_key=${apiKey}`;
   const recommendationTvData = useApi(recommendationTvUrl);
   const similarTvData = useApi(similarTvUrl);
-  console.log(similarTvData);
 
   return (
     <div className="md:w-3/4 mx-auto pb-[45px] px-[5%]">

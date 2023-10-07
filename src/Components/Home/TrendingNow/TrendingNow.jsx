@@ -76,7 +76,11 @@ const TrendingNow = () => {
           ) : (
             <>
               {topRatedFetchData?.datas?.results?.map((cate) => (
-                <HomeCard cate={cate} key={cate?.backdrop_path}></HomeCard>
+                <HomeCard
+                  cate={cate}
+                  type="movie"
+                  key={cate?.backdrop_path}
+                ></HomeCard>
               ))}
             </>
           )}

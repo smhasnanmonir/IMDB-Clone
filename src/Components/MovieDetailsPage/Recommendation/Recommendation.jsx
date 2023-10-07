@@ -15,13 +15,13 @@ const Recommendation = ({ recommendations, type }) => {
               {type == "movie" ? (
                 <>
                   {recommendations?.datas?.results?.map((result, i) => (
-                    <HomeCard key={i} cate={result}></HomeCard>
+                    <HomeCard type={type} key={i} cate={result}></HomeCard>
                   ))}
                 </>
               ) : (
                 <>
                   {recommendations?.datas?.results?.map((result, i) => (
-                    <HomeCard key={i} cate={result}></HomeCard>
+                    <HomeCard type={type} key={i} cate={result}></HomeCard>
                   ))}
                 </>
               )}

@@ -11,7 +11,6 @@ const TvSeasonDetails = () => {
   const tvDetailsUrl = `https://api.themoviedb.org/3/tv/${TvId}?api_key=${apiKey}`;
   const singleTvData = useApi(tvDetailsUrl);
   const tvEpisodeDetailsUrl = `https://api.themoviedb.org/3/tv/${TvId}/season/{season_number}?api_key=${apiKey}`;
-  console.log(singleTvData);
   return (
     <div className="md:w-3/4 mx-auto py-[25px] px-[5%]">
       <h1 className="md:text-3xl text-2xl py-[25px]">

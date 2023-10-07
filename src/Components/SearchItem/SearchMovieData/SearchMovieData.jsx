@@ -3,7 +3,6 @@ import HomeCard from "../../Home/HomeCard/HomeCard";
 
 const SearchMovieData = ({ searchData, type }) => {
   const { SearchId } = useParams();
-  console.log(searchData);
 
   return (
     <div>
