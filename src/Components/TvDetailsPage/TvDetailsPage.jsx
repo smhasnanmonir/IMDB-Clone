@@ -18,7 +18,7 @@ const TvDetailsPage = () => {
   const singleTvPhotoUrl = `https://api.themoviedb.org/3/tv/${TvId}/images?api_key=${apiKey}`;
   const singleTvPhotoData = useApi(singleTvPhotoUrl);
   const tvReViewUrl = `https://api.themoviedb.org/3/tv/${TvId}/reviews?api_key=${apiKey}`;
-  const tvReViewData = useApi(tvReViewUrl);
+  // const tvReViewData = useApi(tvReViewUrl);
   const singleTvCastsUrl = `https://api.themoviedb.org/3/tv/${TvId}/credits?api_key=${apiKey}`;
   const singleTvCastsData = useApi(singleTvCastsUrl);
 
@@ -89,10 +89,16 @@ const TvDetailsPage = () => {
         <TopStart singleMovieCreditData={singleTvCastsData}></TopStart>
       </>
       <>
-        <h1 className="py-[25px] md:text-4xl text-xl font-semibold">
-          Similar Tv Shows
-        </h1>
-        <Recommendation recommendations={recommendationTvData}></Recommendation>
+        {recommendationTvData?.datas?.results?.length != 0 && (
+          <>
+            <h1 className="py-[25px] md:text-4xl text-xl font-semibold">
+              Similar Tv Shows
+            </h1>
+            <Recommendation
+              recommendations={recommendationTvData}
+            ></Recommendation>
+          </>
+        )}
       </>
     </div>
   );
