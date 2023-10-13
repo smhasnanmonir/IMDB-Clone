@@ -129,7 +129,7 @@ const ActorDetailsPage = () => {
             <>
               <div className="grid md:grid-cols-5 grid-cols-2 gap-2">
                 {actorSeriesCredit?.datas?.cast?.map((series, i) => (
-                  <HomeCard key={i} cate={series}></HomeCard>
+                  <HomeCard key={i} type="tv" cate={series}></HomeCard>
                 ))}
               </div>
             </>
