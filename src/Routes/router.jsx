@@ -5,8 +5,6 @@ import MovieDetailsPage from "../Components/MovieDetailsPage/MovieDetailsPage";
 import ActorDetailsPage from "../Components/ActorDetailsPage/ActorDetailsPage";
 import SearchItem from "../Components/SearchItem/SearchItem";
 import TvDetailsPage from "../Components/TvDetailsPage/TvDetailsPage";
-import TvSeasonDetails from "../Components/TvDetailsPage/TvSeasonDetails/TvSeasonDetails";
-import TvEpisodeDetails from "../Components/TvDetailsPage/TvEpisodeDetails/TvEpisodeDetails";
 const router = createBrowserRouter([
   {
     path: "/",
@@ -21,16 +19,8 @@ const router = createBrowserRouter([
         element: <MovieDetailsPage></MovieDetailsPage>,
       },
       {
-        path: "/tvDetails/:TvId",
+        path: "/tvDetails/:TvId/:season/:episode",
         element: <TvDetailsPage></TvDetailsPage>,
-      },
-      {
-        path: "/tvSeasonDetails/:TvId",
-        element: <TvSeasonDetails></TvSeasonDetails>,
-      },
-      {
-        path: "/tvSeasonDetails/:TvId/:SeasonNumber",
-        element: <TvEpisodeDetails></TvEpisodeDetails>,
       },
       {
         path: "/actorDetails/:ActorId",

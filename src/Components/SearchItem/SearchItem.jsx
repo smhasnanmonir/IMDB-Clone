@@ -4,7 +4,7 @@ import LoaderSpinner from "../LoaderSpinner/LoaderSpinner";
 import SearchMovieData from "./SearchMovieData/SearchMovieData";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
-const SearchItem = () => {
+const SearchItemShow = () => {
   const { SearchId } = useParams();
   const apiKey = import.meta.env.VITE_apiKey;
   const searchMovieURL = `https://api.themoviedb.org/3/search/movie?query=${SearchId}&api_key=${apiKey}`;
@@ -23,7 +23,7 @@ const SearchItem = () => {
     (search) => search?.profile_path != null
   );
   return (
-    <div className="md:w-3/4 md:px-0 px-[5%] mx-auto">
+    <div className="md:px-[10%] px-[5%] py-[2%]">
       <Tabs>
         <TabList>
           <Tab>Movie</Tab>
@@ -78,4 +78,4 @@ const SearchItem = () => {
   );
 };
 
-export default SearchItem;
+export default SearchItemShow;

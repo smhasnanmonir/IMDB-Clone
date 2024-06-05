@@ -1,7 +1,10 @@
+/* eslint-disable react/prop-types */
 import { useParams } from "react-router-dom";
-import HomeCard from "../../Home/HomeCard/HomeCard";
 
-const SearchMovieData = ({ searchData, type }) => {
+import LoaderSpinner from "../../LoaderSpinner/LoaderSpinner";
+import Card from "../../Card/Card";
+
+const SearchData = ({ searchData, type }) => {
   const { SearchId } = useParams();
 
   return (
@@ -15,11 +18,13 @@ const SearchMovieData = ({ searchData, type }) => {
           {searchData?.length != 0 ? (
             <>
               <h1 className="font-semibold md:text-3xl text-2xl py-[25px]">
-                Search result of {SearchId}
+                Search result of{" "}
+                <span className="text-green-400">{SearchId}</span> in {type}{" "}
+                category
               </h1>
-              <div className="grid md:grid-cols-6 grid-cols-2 gap-2">
+              <div className="grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-2">
                 {searchData?.map((result, i) => (
-                  <HomeCard type={type} key={i} cate={result}></HomeCard>
+                  <Card type={type} key={i} cate={result}></Card>
                 ))}
               </div>
             </>
@@ -36,4 +41,4 @@ const SearchMovieData = ({ searchData, type }) => {
   );
 };
 
-export default SearchMovieData;
+export default SearchData;

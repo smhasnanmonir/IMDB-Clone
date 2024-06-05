@@ -1,17 +1,17 @@
-import { ThreeDots } from "react-loader-spinner";
+import { TailSpin } from "react-loader-spinner";
 
 const LoaderSpinner = () => {
   return (
     <div className="grid place-items-center">
-      <ThreeDots
+      <TailSpin
+        visible={true}
         height="80"
         width="80"
-        radius="9"
         color="#4fa94d"
-        ariaLabel="three-dots-loading"
+        ariaLabel="tail-spin-loading"
+        radius="1"
         wrapperStyle={{}}
-        wrapperClassName=""
-        visible={true}
+        wrapperClass=""
       />
     </div>
   );

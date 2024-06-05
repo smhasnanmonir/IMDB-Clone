@@ -1,13 +1,11 @@
 import { useParams } from "react-router-dom";
 import useApi from "../../Hooks/useApi";
-
-import MovieDeatilSlide from "./MovieDeatilSlide";
-import TopStart from "./TopStart";
-import { LazyLoadImage } from "react-lazy-load-image-component";
+import MovieSlide from "./MovieSlide";
+import TopStars from "./TopStart";
 import "react-lazy-load-image-component/src/effects/blur.css";
 import Recommendation from "./Recommendation/Recommendation";
-import alt2 from "../../assets/MovieDetails/alt2.jpg";
 import LoaderSpinner from "../LoaderSpinner/LoaderSpinner";
+import { Helmet } from "react-helmet";
 const MovieDetailsPage = () => {
   const { MovieId } = useParams();
   const apiKey = import.meta.env.VITE_apiKey;
@@ -23,82 +21,83 @@ const MovieDetailsPage = () => {
   const similarMovieData = useApi(similarMovieUrl);
 
   return (
-    <div className="md:w-3/4 mx-auto my-0 md:px-0 px-[5%] py-[2%]">
-      {singleMovieData?.loading ? (
+    <>
+      {singleMovieData?.loading ||
+      movieImageUrlData?.loading ||
+      recommendationMovieUrl?.loading ||
+      similarMovieData?.loading ? (
         <>
           <LoaderSpinner></LoaderSpinner>
         </>
       ) : (
-        <>
-          <h1 className="md:text-5xl text-3xl pb-[12px] font-semibold">
-            {singleMovieData?.datas?.title}
-          </h1>
-          {singleMovieData?.datas?.backdrop_path ? (
-            <>
-              <LazyLoadImage
-                effect="blur"
-                src={`https://image.tmdb.org/t/p/original${singleMovieData?.datas?.backdrop_path}`}
-              ></LazyLoadImage>
-            </>
-          ) : (
-            <>
-              <LazyLoadImage effect="blur" src={alt2}></LazyLoadImage>
-            </>
-          )}
-        </>
-      )}
-      {/* Genre */}
-      <div className="flex font-semibold gap-[12px]">
-        {singleMovieData?.datas?.genres?.map((genre, i) => (
-          <div key={i} className="pt-[13px]">
-            <h1 className="border-2 border-slate-400 p-1 rounded-md text-[12px]">
-              {genre?.name}
+        <div className="md:px-[10%] px-[5%] py-[2%]">
+          <Helmet>
+            <meta charSet="utf-8" />
+            <title>{singleMovieData?.datas?.title} - SM Movies</title>
+          </Helmet>
+          <div>
+            <h1 className="md:text-5xl text-2xl mt-[10px] pb-[12px] font-semibold ">
+              {singleMovieData?.datas?.title}
             </h1>
+            {/* Movie poster link */}
+            <img
+              className="aspect-video w-full md:h-[450px] h-[250px] object-cover"
+              src={`https://image.tmdb.org/t/p/original${singleMovieData?.datas?.backdrop_path}`}
+              alt=""
+            />
           </div>
-        ))}
-      </div>
+          {/* Genre */}
+          <div className="flex font-semibold gap-[12px]">
+            {singleMovieData?.datas?.genres?.map((genre, i) => (
+              <div key={i} className="pt-[13px]">
+                <h1 className="border-2 border-slate-400 p-1 rounded-md text-[12px]">
+                  {genre?.name}
+                </h1>
+              </div>
+            ))}
+          </div>
 
-      {/* Photos */}
-      <>
-        <h1 className="md:text-4xl text-xl py-[25px]">Image Gallery</h1>
-        {movieImageUrlData?.datas?.backdrops?.length != 0 && (
-          <MovieDeatilSlide
-            movieImageUrlData={movieImageUrlData}
-          ></MovieDeatilSlide>
-        )}
-      </>
+          {/* Photos */}
+          <>
+            <h1 className="md:text-4xl text-xl py-[25px] ">Image Gallery</h1>
+            {movieImageUrlData?.datas?.backdrops?.length != 0 && (
+              <MovieSlide movieImageUrlData={movieImageUrlData}></MovieSlide>
+            )}
+          </>
 
-      {/* Top Start */}
-      <TopStart singleMovieCreditData={singleMovieCreditData}></TopStart>
+          {/* Top Start */}
+          <TopStars singleMovieCreditData={singleMovieCreditData}></TopStars>
 
-      {/* Recommendation Movies */}
+          {/* Recommendation Movies */}
 
-      {recommendationsMovieData?.datas?.results?.length != 0 && (
-        <div className="">
-          <h1 className="md:text-4xl text-2xl font-semibold py-[35px]">
-            Recommended Movies
-          </h1>
-          <Recommendation
-            recommendations={recommendationsMovieData}
-            type="movie"
-          ></Recommendation>
+          {recommendationsMovieData?.datas?.results?.length != 0 && (
+            <div className="">
+              <h1 className="md:text-4xl text-2xl font-semibold py-[35px]">
+                Recommended Movies
+              </h1>
+              <Recommendation
+                recommendations={recommendationsMovieData}
+                type="movie"
+              ></Recommendation>
+            </div>
+          )}
+
+          {/* Similar Movies */}
+
+          {similarMovieData?.datas?.results?.length != 0 && (
+            <div>
+              <h1 className="md:text-4xl text-2xl font-semibold py-[35px]">
+                Similar Movies
+              </h1>
+              <Recommendation
+                recommendations={similarMovieData}
+                type="movie"
+              ></Recommendation>
+            </div>
+          )}
         </div>
       )}
-
-      {/* Similar Movies */}
-
-      {similarMovieData?.datas?.results?.length != 0 && (
-        <div>
-          <h1 className="md:text-4xl text-2xl font-semibold py-[35px]">
-            Similar Movies
-          </h1>
-          <Recommendation
-            recommendations={similarMovieData}
-            type="movie"
-          ></Recommendation>
-        </div>
-      )}
-    </div>
+    </>
   );
 };
 

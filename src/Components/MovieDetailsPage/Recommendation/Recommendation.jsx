@@ -1,35 +1,26 @@
-import HomeCard from "../../Home/HomeCard/HomeCard";
-import LoaderSpinner from "../../LoaderSpinner/LoaderSpinner";
+import Card from "../../Card/Card";
 
 const Recommendation = ({ recommendations, type }) => {
   return (
-    <div>
-      {recommendations?.loading ? (
-        <>
-          <LoaderSpinner></LoaderSpinner>
-        </>
-      ) : (
-        <>
-          {recommendations?.datas?.results != 0 && (
-            <div className="grid md:grid-cols-6 grid-cols-2 gap-[8px]">
-              {type == "movie" ? (
-                <>
-                  {recommendations?.datas?.results?.map((result, i) => (
-                    <HomeCard type={type} key={i} cate={result}></HomeCard>
-                  ))}
-                </>
-              ) : (
-                <>
-                  {recommendations?.datas?.results?.map((result, i) => (
-                    <HomeCard type={type} key={i} cate={result}></HomeCard>
-                  ))}
-                </>
-              )}
-            </div>
+    <>
+      {recommendations?.datas?.results != 0 && (
+        <div className="grid md:grid-cols-6 grid-cols-2 gap-[8px]">
+          {type == "movie" ? (
+            <>
+              {recommendations?.datas?.results?.map((result, i) => (
+                <Card type={type} key={i} cate={result}></Card>
+              ))}
+            </>
+          ) : (
+            <>
+              {recommendations?.datas?.results?.map((result, i) => (
+                <Card type={type} key={i} cate={result}></Card>
+              ))}
+            </>
           )}
-        </>
+        </div>
       )}
-    </div>
+    </>
   );
 };
 

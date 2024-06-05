@@ -1,5 +1,5 @@
 import useApi from "../../../Hooks/useApi";
-import HomeCard from "../HomeCard/HomeCard";
+import Card from "../../Card/Card";
 import LoaderSpinner from "../../LoaderSpinner/LoaderSpinner";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -14,16 +14,18 @@ const TrendingNow = () => {
   const topRatedFetchData = useApi(topRated);
 
   return (
-    <div className="md:px-[10%] px-[5%] py-[2%]">
-      <h1 className="font-semibold text-xl pb-[15px]">Trending Now</h1>
-      <Tabs>
-        <TabList>
+    <div className="md:px-[10%] px-[2%]">
+      <h1 className="font-semibold text-xl mt-[10px] py-[10px] ml-2">
+        Trending Now
+      </h1>
+      <Tabs className="">
+        <TabList className="ml-2 mb-2">
           <Tab>Movies</Tab>
           <Tab>Tv Series</Tab>
         </TabList>
 
         <TabPanel>
-          <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-x-[6px] gap-y-[12px] place-items-center py-[25px] overflow-hidden">
+          <div className="px-2 grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-x-[6px] gap-y-[12px] place-items-center py-[10px] overflow-hidden">
             <>
               {trendingFetchMovieData?.loading ? (
                 <>
@@ -32,11 +34,11 @@ const TrendingNow = () => {
               ) : (
                 <>
                   {trendingFetchMovieData?.datas?.results?.map((cate) => (
-                    <HomeCard
+                    <Card
                       cate={cate}
                       type="movie"
                       key={cate?.backdrop_path}
-                    ></HomeCard>
+                    ></Card>
                   ))}
                 </>
               )}
@@ -44,7 +46,7 @@ const TrendingNow = () => {
           </div>
         </TabPanel>
         <TabPanel>
-          <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-x-[6px] gap-y-[12px] place-items-center py-[25px] overflow-hidden">
+          <div className="p-2 grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-x-[6px] gap-y-[12px] place-items-center  overflow-hidden">
             <>
               {trendingFetchTVData?.loading ? (
                 <>
@@ -53,11 +55,11 @@ const TrendingNow = () => {
               ) : (
                 <>
                   {trendingFetchTVData?.datas?.results?.map((cate) => (
-                    <HomeCard
+                    <Card
                       cate={cate}
                       type="tv"
                       key={cate?.backdrop_path}
-                    ></HomeCard>
+                    ></Card>
                   ))}
                 </>
               )}
@@ -66,8 +68,8 @@ const TrendingNow = () => {
         </TabPanel>
       </Tabs>
 
-      <h1 className="font-semibold text-xl">Top Rated Movies</h1>
-      <div className="grid lg:grid-cols-6 md:grid-cols-4 grid-cols-2 gap-x-[6px] gap-y-[12px] place-items-center py-[25px] overflow-hidden">
+      <h1 className="p-2 font-semibold text-xl">Top Rated Movies</h1>
+      <div className="px-2 grid lg:grid-cols-4 md:grid-cols-3 grid-cols-2 gap-x-[6px] gap-y-[12px] place-items-center py-[10px] overflow-hidden">
         <>
           {topRatedFetchData?.loading ? (
             <>
@@ -76,11 +78,7 @@ const TrendingNow = () => {
           ) : (
             <>
               {topRatedFetchData?.datas?.results?.map((cate) => (
-                <HomeCard
-                  cate={cate}
-                  type="movie"
-                  key={cate?.backdrop_path}
-                ></HomeCard>
+                <Card cate={cate} type="movie" key={cate?.backdrop_path}></Card>
               ))}
             </>
           )}
